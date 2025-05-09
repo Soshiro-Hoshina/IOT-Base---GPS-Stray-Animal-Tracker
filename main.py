@@ -13,8 +13,8 @@ from PIL import Image, ImageTk
 devices = {}
 
 # === Geofencing Settings ===
-SAFE_ZONE_LAT = 14.5995
-SAFE_ZONE_LON = 120.9842
+SAFE_ZONE_LAT = 14.418047877227954
+SAFE_ZONE_LON = 121.04582230803875
 SAFE_AREA_SQM = 500
 SAFE_RADIUS_METERS = math.sqrt(SAFE_AREA_SQM / math.pi)
 
@@ -34,10 +34,11 @@ def read_gps_coordinates():
 
 # === Helper Functions ===
 def random_coordinates():
-    # Only for demo without real GPS
-    lat = random.uniform(14.5985, 14.6005)
-    lon = random.uniform(120.9835, 120.9855)
+    # Simulate small movement near Alabang safe zone
+    lat = random.uniform(14.4178, 14.4182)
+    lon = random.uniform(121.0456, 121.0460)
     return lat, lon
+
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     R = 6371000
@@ -152,13 +153,14 @@ def on_tree_double_click(event):
 
 root=ttkthemes.ThemedTk()
 root.get_themes()
-root.set_theme('winxpblue')
+root.set_theme('breeze')
 root.geometry('1300x1000+10+10')
 root.resizable(0,0)
 root.title("🐾 GPS Tracker")
 
 
-background_image = Image.open('background.jpg')
+
+background_image = Image.open(r'C:\Users\Administrator\Desktop\Codes\GpsTracker\background.jpg')
 background_photo = ImageTk.PhotoImage(background_image)
 
 background_label = tk.Label(root, image=background_photo,width=1300,height=1000)
